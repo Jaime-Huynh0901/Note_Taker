@@ -6,7 +6,7 @@ const path = require('path');
 // Sets up the Express App
 // =============================================================
 const app = express();
-const PORT = 3000;
+const PORT = 8080;
 
 // set up the Express app to handle data parsing
 // =============================================================
