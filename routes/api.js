@@ -5,8 +5,12 @@ const fs = require('fs');
 const readDBFile = () => {
     const note = fs.readFileSync('db/db.json', 'utf8');
     const noteObj = JSON.parse(note);
-    noteObj[0].id = Date.now();
     return noteObj;
+}
+
+const writeDBFile = (data ,res) => {
+    fs.writeFile('db/db.json', JSON.stringify(data) , () => console.log("Done"));
+    return res.json(data);
 }
 
 router.get('/api/notes', (req, res) => {
@@ -25,16 +29,14 @@ router.post('/api/notes', (req, res) => {
 
     const data = readDBFile()
     data.push(newNote);
-    fs.writeFile('db/db.json', JSON.stringify(data) , () => console.log("Done"));
-    return res.json(data);
+    writeDBFile(data, res);
 });
 
 router.delete('/api/notes/:id', (req, res) => {
     const noteId = parseInt(req.params.id);
     const data = readDBFile();
     const updatedData = data.filter( note => note.id != noteId);
-    fs.writeFile('db/db.json', JSON.stringify(updatedData) , () => console.log("Done"));
-    return res.json(updatedData);
+    writeDBFile(updatedData, res);
 });
 
 module.exports = router;
