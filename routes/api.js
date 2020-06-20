@@ -33,7 +33,6 @@ router.delete('/api/notes/:id', (req, res) => {
     const noteId = parseInt(req.params.id);
     const data = readDBFile();
     const updatedData = data.filter( note => note.id != noteId);
-    console.log(updatedData);
     fs.writeFile('db/db.json', JSON.stringify(updatedData) , () => console.log("Done"));
     return res.json(updatedData);
 });
