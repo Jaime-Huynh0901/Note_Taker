@@ -6,7 +6,6 @@ const path = require('path');
 // Sets up the Express App
 // =============================================================
 const app = express();
-const PORT = 8080;
 
 // set up the Express app to handle data parsing
 // =============================================================
@@ -26,7 +25,5 @@ app.use(apiRoutes);
 
 // Starts the server to begin listening
 // =============================================================
-app.listen(PORT, () => {
-    console.log('The application is running on localhost:8080!');
-});
+app.listen(process.env.PORT || 3000, () => console.log("Server is running..."));
 
