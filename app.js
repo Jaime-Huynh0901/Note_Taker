@@ -27,6 +27,6 @@ app.use(apiRoutes);
 // Starts the server to begin listening
 // =============================================================
 app.listen(PORT, () => {
-    console.log('The application is running on localhost:3000!');
+    console.log('The application is running on localhost:8080!');
 });
 
